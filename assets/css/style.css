@@ -1,0 +1,448 @@
+@import "tailwindcss/utilities";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+video::-webkit-media-controls {
+    display: none;
+}
+
+@layer base {
+    *, ::before, ::after{
+        @apply box-border;
+    }    
+    body {
+        @apply p-0 m-0 font-NordiquePro text-DarkGrey text-16 leading-[26px] relative overflow-x-hidden;  
+    }
+    body.menu-open {
+        @apply overflow-hidden;
+    }    
+    .container-fluid {
+        @apply xl2:px-[100px] xl:px-[80px] xlscreen:px-[70px] lgscreen:px-0 w-full;  
+    } 
+    .container-small {
+        @apply px-40 xlscreen:px-20 mdscreen:px-15 w-full;   
+    }
+    p {
+        @apply m-0 text-16 leading-[22px] font-400; 
+    }  
+    a {
+        @apply no-underline; 
+    }
+    a, button, input, textarea, select {
+        @apply outline-0 no-underline;
+        box-shadow: none; 
+    }
+    a:hover {
+        @apply transition-all duration-300;
+    }
+    ul {
+        @apply p-0 mt-0;
+    }  
+    ul li {
+        @apply list-none;
+    }
+    img {
+        @apply block;
+    }
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        @apply m-0 font-NordiquePro;
+    }
+    .big h1, .big .h1,
+    .big h2, .big .h2,
+    h1.big, .big.h1,
+    h2.big, .big.h2 {
+        @apply text-[45px] leading-[55px] max_width_1200:text-[76px] max_width_1200:leading-[100px] xl:text-[100px] xl:leading-[124px];
+    } 
+    h1, .h1 {
+        @apply text-[45px] leading-[55px] xl:text-64 xl:leading-[100%];
+    } 
+    h2, .h2 {
+        @apply text-[35px] leading-[47px] xl:text-[55px] xl:leading-[73px]; 
+    }
+    h3, .h3 {
+        @apply text-[24px] leading-32 xl:text-[30px] xl:leading-[40px]; 
+    }
+    h4, .h4 {
+        @apply text-[23px] leading-33;
+    }
+    .subtitle2 {
+        @apply text-[40px] leading-[53px];
+    }
+    h5, .h5 {
+        @apply text-20 leading-[27px];
+    }
+    h6, .h6 {
+        @apply text-17 leading-[22px];
+    }
+
+    .content {
+        @apply relative flex flex-col w-full;
+    }
+    .content p a {
+        @apply ease-linear duration-300 delay-150 text-DarkBlue font-400 underline;
+    }
+    .content p {
+        @apply text-DarkGrey text-17 leading-26 font-400 not-italic relative block m-0 p-0 mb-20 last:mb-0;
+    }
+    .content.bold p,
+    .content.bold p a {
+        @apply font-700
+    }
+    .content.white p {
+        @apply text-White
+    }
+    .content p a {
+        @apply hover:text-VibrantPink;
+    }
+
+    .global-list ul {
+        @apply flex flex-col items-start justify-start m-0 p-0 mb-20 last:mb-0 w-full gap-[10px];
+    }
+    .global-list ul li {
+        @apply block relative w-full m-0 p-0 pl-20 text-DarkGrey text-16 leading-26 font-NordiquePro font-400;
+    }
+    .global-list ul li:before {
+        content: "";
+        @apply absolute top-[9px] left-0 w-[10px] h-[10px] bg-Orange rounded-30;
+    } 
+}
+
+@layer components {
+    @keyframes smoothScroll {
+        0% {
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    @keyframes smoothScroll2 {
+        0% {
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(360deg);
+        }
+        to {
+            transform: rotate(0deg);
+        }
+    }
+
+    .row {
+        @apply flex flex-wrap;
+    } 
+    .h-btn-Pink {
+        @apply overflow-hidden relative z-1 text-center bg-VibrantPink text-White border-0 rounded-[46px] px-22 pt-[13px] pb-[11px] text-17 leading-20 font-NordiquePro font-600 normal-case not-italic no-underline duration-300 delay-150 ease-linear drop-shadow-hp-btn hover:drop-shadow-hb-btn;
+    }
+    .h-btn-Pink:after {
+        content: "";
+        @apply absolute bottom-0 left-0 w-full h-0 bg-DarkBlue -z-1 duration-300 delay-150 ease-linear;
+    }
+    .h-btn-Pink:hover:after {
+        @apply h-full top-0;
+    }
+
+    .b-btn-big-DarkBlue {
+        @apply w-full max-w-[220px] block relative overflow-hidden z-1 text-center bg-DarkBlue text-White border-0 rounded-[46px] px-22 py-10 text-18 leading-[28px] font-NordiquePro font-600 normal-case not-italic no-underline duration-300 delay-150 ease-linear;
+    }
+    .b-btn-big-DarkBlue:before {
+        content: "";
+        @apply absolute bottom-0 left-0 w-full h-0 bg-VibrantPink -z-1 duration-300 delay-150 ease-linear;
+    }
+    .b-btn-big-DarkBlue:hover:before {
+        @apply h-full top-0;
+    }
+    .herobanner-wrapper .btn-custom {
+        @apply relative inline-block;
+    }
+    .herobanner-wrapper .btn-custom img {
+        @apply absolute top-50_per -right-[25px] translate-y-minus_50 z-2 duration-300 delay-150 ease-linear;
+        filter: invert(25%) sepia(53%) saturate(3638%) hue-rotate(328deg) brightness(96%) contrast(92%);
+    }
+    .herobanner-wrapper .btn-custom:hover img {
+        @apply -right-[15px];
+        filter: invert(23%) sepia(11%) saturate(4028%) hue-rotate(193deg) brightness(97%) contrast(101%);
+    }
+
+    .line-clamp-two {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;   
+    }  
+    .line-clamp-three {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden; 
+    }
+    .line-clamp-four {
+        display: -webkit-box;  
+        -webkit-line-clamp: 4;  
+        -webkit-box-orient: vertical; 
+        overflow: hidden; 
+    }
+    .title {
+        @apply relative;
+    }
+    .title h1,
+    .title .h1,
+    .title h2,
+    .title .h2,
+    .title h3,
+    .title .h3,
+    .title h4,
+    .title .h4,
+    .title h5,
+    .title .h5,
+    .title h6,
+    .title .h6 {
+        @apply not-italic m-0 p-0;
+    }
+
+    .title-white h1,
+    .title-white .h1,
+    .title-white h2,
+    .title-white .h2,
+    .title-white h3,
+    .title-white .h3,
+    .title-white h4,
+    .title-white .h4,
+    .title-white h5,
+    .title-white .h5,
+    .title-white h6,
+    .title-white .h6 {
+        @apply text-White;
+    }
+
+    .title-DarkBlue h1,
+    .title-DarkBlue .h1,
+    .title-DarkBlue h2,
+    .title-DarkBlue .h2,
+    .title-DarkBlue h3,
+    .title-DarkBlue .h3,
+    .title-DarkBlue h4,
+    .title-DarkBlue .h4,
+    .title-DarkBlue h5,
+    .title-DarkBlue .h5,
+    .title-DarkBlue h6,
+    .title-DarkBlue .h6 {
+        @apply text-DarkBlue;
+    }
+    .title-DarkBlue .subtitle-dark {
+        @apply text-DarkGrey;
+    }
+
+    .title-DarkGrey h1,
+    .title-DarkGrey .h1,
+    .title-DarkGrey h2,
+    .title-DarkGrey .h2,
+    .title-DarkGrey h3,
+    .title-DarkGrey .h3,
+    .title-DarkGrey h4,
+    .title-DarkGrey .h4,
+    .title-DarkGrey h5,
+    .title-DarkGrey .h5,
+    .title-DarkGrey h6,
+    .title-DarkGrey .h6 {
+        @apply text-DarkGrey;
+    }    
+
+    .img-landscape {
+        @apply pt-[80%];
+    }
+    
+}
+
+@layer utilities {
+/* Header Start */ 
+    header {
+        @apply absolute top-0 left-0 w-full z-999 xlscreen:pb-20 pt-20 xl:pt-35 xl:pb-20;
+    }
+    header.is-sticky {
+        animation: smoothScroll 1s forwards;
+        z-index: 1030;
+        @apply fixed top-0 bg-DarkGrey py-20;
+    }
+    header .logo {
+        @apply xl:w-full xl:max-w-[16vw];
+    }
+    header .navbar .mobile-menu-main {
+        @apply flex xlscreen:flex-col xl:flex-wrap justify-center xl:items-center m-0 p-0 xlscreen:py-30 gap-6 xl:gap-10 xxxl:gap-16;
+    }
+    header .navbar .mobile-menu-main .main>ul {
+        @apply flex xlscreen:flex-col xl:flex-wrap justify-center items-center m-0 p-0 xl:gap-10 xlscreen:w-full;
+    }
+    header .navbar .mobile-menu-main .main>ul>li {
+        @apply static m-0 flex flex-wrap p-0 duration-300 delay-150 ease-linear xlscreen:w-full xlscreen:items-center xlscreen:justify-between;
+    }
+    header .navbar .mobile-menu-main .main>ul>li>a {
+        @apply text-White text-20 leading-[27px] m-0 p-0 capitalize relative duration-300 delay-150 ease-linear;
+    }
+    header .navbar .mobile-menu-main .main>ul>li>a::after {
+        content: "";
+        @apply absolute bottom-0 right-0 w-0 h-[1px] bg-VibrantPink duration-300 delay-150 ease-linear;
+    }
+    header .navbar .mobile-menu-main .main>ul>li:hover>a::after {
+        @apply w-full left-0;
+    }
+
+    .navbar ul>li>ul.sub-menu {
+        @apply absolute top-[100%] translate-y-[30px] left-0 m-0 w-full bg-White py-40 xl:px-[140px] opacity-0 invisible -z-9999 drop-shadow-menu duration-300 delay-150 ease-linear;
+    }
+    .navbar ul>li:hover>ul.sub-menu {
+        @apply opacity-100 visible z-1 translate-y-0;
+    }
+    .navbar ul>li>ul.sub-menu>li:first-child {
+        @apply flex flex-wrap xlscreen:items-start xlscreen:justify-center w-full m-0 p-0 xl:pl-40 border-0 xl:border-b-1 xl:border-dashed xl:border-DarkBlue xlscreen:gap-6;
+    }
+    .navbar ul>li>ul.sub-menu>li:last-child {
+        @apply flex flex-wrap items-center xl:justify-center xl:pt-30 w-full m-0 p-0;
+    }
+    .navbar ul>li>ul.sub-menu>li:last-child p,
+    .navbar ul>li>ul.sub-menu>li:last-child a {
+        @apply text-DarkGrey text-[17px] leading-22 font-400 m-0 p-0 duration-300 delay-150 ease-linear;
+    }
+    .navbar ul>li>ul.sub-menu>li:last-child a:hover {
+        @apply text-VibrantPink;
+    }
+    .navbar ul>li>ul.sub-menu>li .lft-menu {
+        @apply flex flex-col items-start justify-start;
+    }
+    .navbar ul>li>ul.sub-menu>li .lft-menu ul.inner {
+        @apply flex flex-col m-0 p-0 xl:pt-30 xl:pb-40 xl:h-full w-full justify-start items-start gap-6 xl:gap-8 border-0 xl:border-r-1 xl:border-dashed xl:border-DarkBlue;
+    }
+    .navbar ul>li>ul.sub-menu>li .lft-menu ul.inner li a {
+        @apply block;
+    }
+    .navbar ul>li>ul.sub-menu>li .lft-menu ul.inner li a span {
+        @apply block text-DarkGrey text-30 leading-36 font-700 m-0 p-0 duration-300 delay-150 ease-linear;
+    }
+    .navbar ul>li>ul.sub-menu>li .lft-menu ul.inner li a p {
+        @apply block text-DarkGrey text-[17px] leading-22 font-400 m-0 p-0 duration-300 delay-150 ease-linear;
+    }
+    .navbar ul>li>ul.sub-menu>li .lft-menu ul.inner li a:hover span,
+    .navbar ul>li>ul.sub-menu>li .lft-menu ul.inner li a:hover p {
+        @apply text-VibrantPink;
+    }
+
+    .navbar ul>li>ul.sub-menu>li .rgt-menu ul.inner {
+        @apply sm:columns-2 xl:pt-30 xl:gap-y-6 smscreen2:gap-6 smscreen2:flex smscreen2:flex-col smscreen2:items-start smscreen2:justify-start;
+    }
+    .navbar ul>li>ul.sub-menu>li .rgt-menu ul.inner li {
+        @apply sm:mb-20;
+    }
+    .navbar ul>li>ul.sub-menu>li .rgt-menu ul.inner li a {
+        @apply block text-DarkGrey text-[17px] leading-22 font-700 m-0 p-0 duration-300 delay-150 ease-linear hover:text-VibrantPink;
+    }
+
+    .navbar ul>li>ul.sub-menu>li .rgt-menu .img {
+        @apply xl:pb-40
+    }    
+/* Header End */
+
+/* Banner Start */
+    .herobanner-wrapper {
+        @apply relative m-0 p-0 lg:pt-[150px] lg:pb-100 pt-80 py-55 w-full h-[655px] xl:h-auto flex flex-col items-center justify-center;
+    }
+    .herobanner-wrapper .banner-video {
+        @apply absolute top-0 left-0 w-full h-full xl:max-h-[800px];
+        -webkit-mask-image: url(./../../images/relative-homepage-background-green.svg);
+        mask-image: url(./../../images/relative-homepage-background-green.svg);
+        -webkit-mask-size: cover;
+        mask-size: cover;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center bottom;
+        mask-position: center bottom;
+    }
+    @screen xlscreen {
+        .herobanner-wrapper .banner-video {
+            -webkit-mask-position: left bottom;
+            mask-position: left bottom;
+        }
+    }
+    .consultation-form .form-group label {
+        @apply text-DarkBlue text-[17px] font-700 leading-[26px] m-0 mx-20 p-0 capitalize;
+    }
+    .consultation-form .form-group input {
+        @apply text-[17px] leading-[26px] block border-1 border-DarkBlue border-dashed bg-White m-0 p-0 pt-[9px] pb-[8px] px-18 w-full outline-none rounded-25 text-DarkGrey font-NordiquePro font-400 placeholder:text-opacity-50 focus:border-VibrantPink
+    }
+/* Banner End */
+
+/* zigzag-img-with-content Start */
+    .zigzag-img-with-content .zigzag-left {
+        @apply ml-auto lg:-mr-[12%] relative z-1;
+    }
+    .zigzag-img-with-content .zigzag-right .oval-masking {
+        @apply block relative overflow-hidden w-full lg:pt-[124.89%] pt-[99.49%];
+    }
+    @screen lg {
+        .zigzag-img-with-content .zigzag-right .oval-masking {
+            -webkit-mask-image: url(./../../images/HandDrawing_Full.svg);
+            mask-image: url(./../../images/HandDrawing_Full.svg);
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+        }
+    }
+    .zigzag-img-with-content .zigzag-right .oval-masking img {
+        @apply absolute top-0 left-0;
+    }
+/* zigzag-img-with-content End */
+    
+}      
+
+/* Responsive CSS Start */
+@screen xlscreen {
+    .navbar-toggler svg,
+    .navbar-toggler svg g,
+    .navbar-toggler svg g path {
+        @apply transition-all duration-300 delay-150 ease-linear
+    }
+    .menu-open .navbar-toggler svg g path,
+    .navbar-toggler svg:hover g path {
+        @apply fill-White transition-all duration-300 delay-150 ease-linear;
+    }
+    .navbar {
+        @apply absolute left-0 top-[100%] h-[calc(100vh_-_175px)] w-full max-w-none overflow-y-auto overflow-x-hidden px-0 duration-300 delay-150 ease-linear;
+    }
+    .navbar {
+        @apply hidden
+    }
+    .header .navbar.active {
+        @apply block bg-White;
+    }
+    .navbar ul>li>.submenu-button {
+        @apply order-2 mx-30 block cursor-pointer p-10 leading-0;
+    }
+    .navbar ul>li>.submenu-button svg {
+        @apply fill-DarkGrey
+    }
+    .navbar ul>li>.submenu-button.submenu-opened svg {
+        @apply rotate-180 fill-VibrantPink;
+    }
+    header .navbar .mobile-menu-main .main>ul>li>a {
+        @apply text-DarkGrey mx-30 my-[12px]
+    }
+    header .navbar .mobile-menu-main .main>ul>li>a.active::after {
+        @apply w-full
+    }
+    .navbar ul>li>ul.sub-menu {
+        @apply hidden relative w-full flex-col bg-DarkGrey bg-opacity-10 p-0 text-left opacity-100 visible z-1 order-3 translate-y-0 gap-6;
+    }
+    .navbar ul>li.has-sub>ul.sub-menu.open {
+        @apply !flex py-20 px-30  opacity-100 visible z-1;
+    }
+}
+/* Responsive CSS End */
