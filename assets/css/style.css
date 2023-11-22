@@ -2,8 +2,17 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-video::-webkit-media-controls {
-    display: none;
+body::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar {
+	width: 0px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #000000;
 }
 
 @layer base {
@@ -80,7 +89,7 @@ video::-webkit-media-controls {
         @apply relative flex flex-col w-full;
     }
     .content p a {
-        @apply ease-linear duration-300 delay-150 text-DarkBlue font-400 underline;
+        @apply ease-linear duration-300 delay-150 text-DarkGrey font-700 no-underline;
     }
     .content p {
         @apply text-DarkGrey text-17 leading-26 font-400 not-italic relative block m-0 p-0 mb-20 last:mb-0;
@@ -159,6 +168,22 @@ video::-webkit-media-controls {
     .b-btn-big-DarkBlue:hover:before {
         @apply h-full top-0;
     }
+
+    .btn-DarkBlue {
+        @apply inline-block relative overflow-hidden z-1 text-center bg-DarkBlue text-White border-0 rounded-[46px] px-[43px] pt-[12px] pb-[12px] text-17 leading-[20px] font-NordiquePro font-600 normal-case not-italic no-underline duration-300 delay-150 ease-linear drop-shadow-hb-btn hover:drop-shadow-hp-btn;
+    }
+    .btn-DarkBlue:before {
+        content: "";
+        @apply absolute bottom-0 left-0 w-full h-0 bg-VibrantPink -z-1 duration-300 delay-150 ease-linear;
+    }
+    .btn-DarkBlue:hover:before {
+        @apply h-full top-0;
+    }
+
+    .btn-linkarw {
+        @apply flex flex-wrap items-center gap-4 relative text-DarkGrey p-0 text-17 leading-[20px] font-NordiquePro font-700 normal-case not-italic no-underline duration-300 delay-150 ease-linear hover:text-VibrantPink;
+    }
+
     .herobanner-wrapper .btn-custom {
         @apply relative inline-block;
     }
@@ -234,7 +259,7 @@ video::-webkit-media-controls {
     .title-DarkBlue .h5,
     .title-DarkBlue h6,
     .title-DarkBlue .h6 {
-        @apply text-DarkBlue;
+        @apply text-DarkBlue font-700;
     }
     .title-DarkBlue .subtitle-dark {
         @apply text-DarkGrey;
@@ -252,11 +277,21 @@ video::-webkit-media-controls {
     .title-DarkGrey .h5,
     .title-DarkGrey h6,
     .title-DarkGrey .h6 {
-        @apply text-DarkGrey;
-    }    
+        @apply text-DarkGrey font-700;
+    }  
 
-    .img-landscape {
-        @apply pt-[80%];
+    .list-style ul {
+        @apply relative flex flex-col items-start justify-start m-0 p-0 w-full list-none gap-5;
+    }
+    .list-style ul li {
+        @apply block m-0 p-0 pl-30 relative;
+    }
+    .list-style ul li span {
+        @apply block font-700 text-17 leading-20 m-0 mt-[2px] p-0 text-DarkGrey;
+    }
+    .list-style ul li:before {
+        content: "";
+        @apply absolute top-0 left-0 w-[20px] h-[20px] bg-DarkGrey rounded-48;
     }
     
 }
@@ -294,6 +329,9 @@ video::-webkit-media-controls {
         @apply w-full left-0;
     }
 
+    .navbar::-webkit-scrollbar {
+        @apply w-0
+    }
     .navbar ul>li>ul.sub-menu {
         @apply absolute top-[100%] translate-y-[30px] left-0 m-0 w-full bg-White py-40 xl:px-[140px] opacity-0 invisible -z-9999 drop-shadow-menu duration-300 delay-150 ease-linear;
     }
@@ -400,6 +438,137 @@ video::-webkit-media-controls {
         @apply absolute top-0 left-0;
     }
 /* zigzag-img-with-content End */
+
+/* Services Start */
+    .services-wrapper .landscape {
+        @apply relative block w-full lg:max-w-[812px];
+    }
+    .services-wrapper .img img {
+        @apply overflow-hidden lg:rounded-10;
+    }
+    .services-wrapper .left {
+        @apply p-0 py-80 lg:pt-60 lg:pb-[97px] lg:px-80 xl:pt-80 xl:pb-[160px] xl:pl-[138px] xl:pr-[80px] justify-start
+    }
+    .services-wrapper .right {
+        @apply p-0 py-80 lg:pt-60 lg:pb-[97px] lg:px-80 xl:pt-80 xl:pb-[160px] xl:pr-[138px] xl:pl-[80px] justify-start
+    }
+    .services-wrapper .ser_img-pattern:before {
+        content: "";
+        @apply lg:hidden absolute top-[30px] right-[30px] w-[105px] h-[84px] bg-[url(./../../images/service-pattern-lft-tp.svg)] bg-contain bg-no-repeat bg-center z-1;
+    }
+    .services-wrapper .ser_img-pattern:after {
+        content: "";
+        @apply lg:hidden absolute bottom-[30px] right-[30px] w-[107px] h-[97px] bg-[url(./../../images/service-pattern-lft-btm.svg)] bg-contain bg-no-repeat bg-center z-1;
+    }
+    .ser_img-pattern-left {
+        @apply relative;
+    }
+    .ser_img-pattern-left .img:before {
+        content: "";
+        @apply lgscreen:hidden absolute top-[-8%] right-[-17%] w-[21.8%] h-[30.5%] bg-[url(./../../images/service-pattern-lft-tp.svg)] bg-cover bg-no-repeat bg-center z-1;
+    }
+    .ser_img-pattern-left .img:after {
+        content: "";
+        @apply lgscreen:hidden absolute bottom-[-10.8%] left-[0] w-[20%] h-[26%] bg-[url(./../../images/service-pattern-lft-btm.svg)] bg-cover bg-no-repeat bg-center z-1;
+    }
+    .ser_img-pattern-right .img:before {
+        content: "";
+        @apply lgscreen:hidden absolute top-[-8%] left-[-17%] w-[21.5%] h-[30.5%] bg-[url(./../../images/service-pattern-rgt-tp.svg)] bg-cover bg-no-repeat bg-center z-1;
+    }
+    .ser_img-pattern-right .img {
+        @apply lg:ml-auto
+    }
+    .ser_img-pattern-right .img:after {
+        content: "";
+        @apply lgscreen:hidden absolute bottom-[-15%] right-[0] w-[20%] h-[26%] bg-[url(./../../images/service-pattern-rgt-btm.svg)] bg-cover bg-no-repeat bg-center z-1;
+    }
+/* Services End */
+
+/* Our work Start */
+    .ourwork-wrapper {
+        @apply bg-no-repeat bg-center bg-[length:100rem_44rem] lg:bg-[left_6.5rem_top_0rem] md:bg-contain
+    }
+    .work-wrapper .navy-graphic {
+        @apply bg-[length:100%] lg:bg-[length:90%] bg-no-repeat bg-[0_12%] lg:bg-[0px_30%];
+    }
+    .work-wrapper .navy-graphic .img {
+        @apply w-full px-[15%] sm:px-[25%] mt-[14%] mb-[28%] lg:mt-[10%] lg:mb-[20%];
+    }
+    .work-wrapper .teal-graphic {
+        @apply bg-[length:100%] lg:bg-[length:90%] bg-no-repeat bg-[0_12%] lg:bg-[0px_30%];
+    }
+    .work-wrapper .teal-graphic .img {
+        @apply w-full px-[15%] sm:px-[25%] mt-[19%] mb-[19%];
+    }
+    .work-wrapper .pinkred-graphic {
+        @apply bg-[length:100%] lg:bg-[length:90%] bg-no-repeat bg-[0_12%] lg:bg-[0px_30%];
+    }
+    .work-wrapper .pinkred-graphic .img {
+        @apply w-full px-[15%] sm:px-[25%] my-[25%] lg:my-[18%];
+    }
+    .work-wrapper .graphic-img .landscape {
+        @apply relative overflow-hidden block w-full pt-[76.84%];
+    }
+    .work-wrapper .graphic-img .img img {
+        @apply w-full h-full object-cover absolute top-0 left-0;
+    }
+    .radius-right {
+        @apply rounded-tl-[53px] rounded-tr-[8px] rounded-bl-[23px] rounded-br-[53px]
+    }
+    .radius-left {
+        @apply rounded-tl-[8px] rounded-tr-[53px] rounded-bl-[53px] rounded-br-[23px]
+    }
+    .work-wrapper .overlay-txt-left {
+        @apply w-full max-w-[180px] xl:max-w-[220px];
+    }
+    .work-wrapper .graphic-img .overlay-txt-right {
+        @apply w-full max-w-[130px] xl:max-w-[220px] absolute bottom-0 right-0;
+    }
+
+    .work-wrapper .navy-graphic .overlay-txt-right {
+        @apply xl2:right-[60px]
+    }
+    .work-wrapper .pinkred-graphic .overlay-txt-right {
+        @apply relative lg:ml-auto
+    }
+
+    .work-wrapper .graphic-img .overlay-txt-left {
+        @apply w-full max-w-[130px] xl:max-w-[220px] absolute bottom-0 left-0;
+    }
+
+    .work-wrapper .teal-graphic .overlay-txt-left {
+        @apply lg:left-[28%]
+    }
+
+    .work-wrapper .overlay-txt-left span,
+    .work-wrapper .graphic-img .overlay-txt-right span {
+        @apply block text-DarkGrey font-NordiquePro font-700 text-17 leading-20 xl:text-30 xl:leading-36 m-0 p-0
+    }
+/* Our work End */
+
+/* Blog Start */
+    .blog-wrapper .card .img {
+        @apply bg-LightGrey rounded-[20px]
+    }
+    .blog-wrapper .card .landscape {
+        @apply block relative overflow-hidden w-full pt-[77.23%];
+    }
+    .blog-wrapper .card .landscape img {
+        @apply absolute top-0 left-0
+    }
+    .blog-wrapper .card .tag {
+        @apply absolute top-[25px] right-[40px] w-auto z-1
+    }
+    .blog-wrapper .card .tag a {
+        @apply block text-DarkGrey font-700 leading-20 bg-White bg-opacity-90 rounded-30 pt-[18px] pb-[14px] px-[41px] duration-300 delay-300 ease-linear hover:bg-opacity-100;
+    }
+    .blog-wrapper .card .title-link h3 {
+        @apply duration-300 delay-150 ease-linear;
+    }
+    .blog-wrapper .card .title-link:hover h3 {
+        @apply text-VibrantPink;
+    }
+/* Blog End */
     
 }      
 
